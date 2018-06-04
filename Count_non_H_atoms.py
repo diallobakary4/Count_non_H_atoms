@@ -1,5 +1,5 @@
 import os
-def count_non_H(molecule_mol2):
+def count_non_H(molecule_mol2):   
   """
   Count the number of non H atom in a mol2 file
   """
@@ -18,3 +18,9 @@ def count_non_H(molecule_mol2):
     if line[8:11] != " H ":
       non_H +=1
   return non_H - 1 # -1 because the first atom doesnt include any h atom and is not part of the molecule
+
+
+#batch processing for all files in a directory
+for file in os.listdir("."):
+  if file.endswith(".mol2"):
+    print file, count_non_H(file)
